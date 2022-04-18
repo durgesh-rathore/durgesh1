@@ -1,0 +1,24 @@
+<!-- <p>view-category works!</p> -->
+
+ <table class="table table-danger">
+     <thead>
+         <tr>
+             <th>SNo.</th>
+             <th>Name</th>
+             <th>Image</th>
+             <th>Edit</th>
+             <th>Delete</th>
+         </tr>
+     </thead>
+     <tbody>
+         <tr *ngFor="let file of fileList; index as SNo">
+             <!-- <td>5</td> -->
+             <td>{{SNo+1}}</td>
+             <td>{{file.categoryName}}</td>
+             <td> <img  width="100px 100px" src={{file.categoryImageUrl}} alt="loading"> </td>
+             <td> <button class="btn btn-primary" (click)="deleteCategory(file._id,SNo)">Delete</button></td>
+             <td> <button class="btn btn-danger" (click)="EditCategory(file._id)">Edit </button></td>
+             <!-- <td> >Edit</a></td> -->
+         </tr>
+     </tbody>
+ </table>

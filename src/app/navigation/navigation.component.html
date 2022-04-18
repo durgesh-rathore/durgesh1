@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg navbar-light bg">
+    <a class="navbar-brand">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav cl">
+        <li class="nav-item">
+          <a *ngIf="!cheackTokenHtml()" class="nav-link" routerLink="signup">SignUp</a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="!cheackTokenHtml()"  class="nav-link" routerLink="signin">SignIn</a>
+        </li>
+        <li class="nav-item">
+          <a  *ngIf="cheackTokenHtml()" class="nav-link" routerLink="addCategory">Add Category</a>
+        </li>
+        <li class="nav-item">
+          <a  *ngIf="cheackTokenHtml()" class="nav-link" routerLink="viewCategory">View Category</a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="cheackTokenHtml()" class="nav-link" routerLink="addProduct">Add Product</a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="cheackTokenHtml()" class="nav-link" routerLink="viewProduct">View Product</a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="cheackTokenHtml()" class="nav-link" routerLink="viewCart">View Cart</a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="cheackTokenHtml()" class="nav-link" (click)="SignOut()">SignOUt</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+      <router-outlet></router-outlet>
+  </div>
+  <!-- <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <button type="button" class="btn btn-outline-secondary">Action</button>
+      <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+        <div role="separator" class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Separated link</a>
+      </div>
+    </div>
+    <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
+  </div>
+  
+  <div class="input-group">
+    <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
+    <div class="input-group-append">
+      <button type="button" class="btn btn-outline-secondary">Action</button>
+      <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+        <div role="separator" class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Separated link</a>
+      </div>
+    </div>
+  </div> -->

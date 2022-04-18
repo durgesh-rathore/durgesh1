@@ -1,0 +1,15 @@
+<div class="container">
+<form >
+  <p class="form-group">
+    <input type="text" [(ngModel)]="categoryName" class="form-control" placeholder="Enter the category Name" name="categoryName" id="">
+  </p>
+  <p class="form-group">
+    <input type="file" (change)="selectImage($event)" name="categoryImage" class="form-control"  name="categoryName" id="">
+  </p>
+  <p class="form-group">
+      <button type="submit" (click)="addCategoryHtml()" class="btn btn-primary">
+        AddCategory
+      </button>
+  </p>
+</form>
+</div>

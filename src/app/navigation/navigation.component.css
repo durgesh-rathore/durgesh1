@@ -1,0 +1,11 @@
+.bg{
+    background-color: #083546;
+    color: azure;
+}
+ul li a{
+   color: rgb(209, 195, 195);
+   font-size: 25px;
+}
+ul li a:hover{
+    color: burlywood;
+}

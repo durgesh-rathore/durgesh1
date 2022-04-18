@@ -1,0 +1,53 @@
+<!-- <p>view-product works!</p>
+<p>view-category works!</p> -->
+
+ <table class="table table-danger">
+    <thead>
+        <tr>
+            <th>SNo.</th>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            <th>AddCart</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of productList; index as SNo">
+
+            <td>{{SNo+1}}</td>
+            <td>{{product.productName}}</td>
+            <td> <img  width="100px 100px" src={{product.productImageUrl}} alt="loading"> </td>
+            <td> <button class="btn btn-primary" (click)="deleteProduct(product._id,SNo)">Delete</button></td> 
+            <td> <button class="btn btn-danger" (click)="EditProduct(product._id)">Edit </button></td>
+
+            <td > <button class="btn btn-danger" (click)="addToCartHtml(product._id)">+cart</button></td>
+            <td > <button class="btn btn-danger" (click)="removeFromCartHtml(product._id)">Remove cart</button></td>
+            <!-- <td> <button class="btn btn-danger" (click)="EditProduct(product._id)"> </button></td> -->
+        </tr>
+    </tbody>
+</table> 
+
+
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-4 col-sm-12 col-xs-12">
+            <div class="card pl-4 pr-3 py-2" *ngFor="let product of productList; index as SNo">
+                <div class="div1 row py-4 px-2">
+                    <div class="col-3 mt-2"> <button class="btn discBtn text-white p-1 p-md-2"></button> </div>
+                    <div class="col-6 d-flex justify-content-center"> <img src={{product.productImageUrl}} height="" width="150%" alt=""> </div>
+                    <div class="col-3 d-flex flex-column pl-4"> <i class="fa fa-heart fa-lg mt-4" aria-hidden="true"></i> <i class="fa fa-balance-scale mt-3 font-weight-bold" aria-hidden="true"></i> </div>
+                </div>
+                <div class="py-2">
+                    <p class="ml-3 ml-md-5"> <i class="fa fa-paw" aria-hidden="true"></i> <span class="small">20</span> <i class="fa fa-arrows ml-4" aria-hidden="true"></i> <span class="small"> 0% 12m</span> </p>
+                    <h5>Smartphone Apple iPhone Xs 64GB E2 Silver</h5>
+                    <p> Apple A12, 4 GB, 64GB </p>
+                    <div class="d-flex">
+                        <h5 class="align-self-center">Rs. 29 999</h5> <button class="buy d-flex ml-auto font-weight-bold pl-4 pr-5 py-2 border-0"> Buy </button> <span class="cart text-white d-flex p-2"><i class="fa fa-shopping-cart fa-lg align-self-center" aria-hidden="true"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
