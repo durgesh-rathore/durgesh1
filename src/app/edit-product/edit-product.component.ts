@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CategoryService } from '../category.service';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -12,9 +13,19 @@ export class EditProductComponent implements OnInit {
    products:any;
    productName:any;
    productImageUrl:any;
-  
-  constructor(private router:ActivatedRoute,private productService:ProductService) {
+   productImage:any="";
+    productPrice:any;
+    productQty:any;
+    productDescription:string="";
+    productDiscount:any="";
+    categoryId:any="";
+    categoryData:any[]=[];
+  constructor(private _cservice:CategoryService,private router:ActivatedRoute,private productService:ProductService) {
     this.productId=this.router.snapshot.paramMap.get('pid');
+    this._cservice.viewCategoryf().subscribe(result=>{
+           this.categoryData=result;
+         })
+      
     this.productService.viewProduct().subscribe(result=>{
       if(result){
         this.products=result;
@@ -22,6 +33,11 @@ export class EditProductComponent implements OnInit {
           if(product._id==this.productId){
             this.productName=product.productName;
             this.productImageUrl=product.productImageUrl;
+    this.productPrice=product.productPrice;
+    this.productQty=product.productQty;
+    this.productDescription=product.productDescription;
+    this.productDiscount=product.productDiscount;
+    this.categoryId=product.categoryId;
           }
         }
         
@@ -29,7 +45,33 @@ export class EditProductComponent implements OnInit {
       else alert("something went wrong");
     })
    }
+   selectImage(event:any){
+       if(event.target.files.length>0)
+       this.productImage=event.target.files[0];
+     }
+    
+editProductHtml(){
 
+  console.log( "category ID in httml fu");
+  console.log(this.categoryId);
+  let formdata=new FormData();
+  formdata.append("productId",this.productId);
+  formdata.append("productName",this.productName);
+  formdata.append("productImage",this.productImage);
+  formdata.append("productPrice",this.productPrice);
+  formdata.append("productQty",this.productQty);
+  formdata.append("productDescription",this.productDescription);
+  formdata.append("productDiscount",this.productDiscount);
+  // formdata.append("categoryId",this.categoryId);
+  formdata.append("productOldImageUrl",this.productImageUrl);
+
+   this.productService.editProduct(formdata).subscribe(result=>{
+      if(!result)
+       alert('You product added sucseful');
+       else
+       alert('Failed to add product!');
+   })
+ }
   ngOnInit(): void {
   }
 
@@ -38,28 +80,54 @@ export class EditProductComponent implements OnInit {
 
 
 
-// export class EditCategoryComponent implements OnInit {
-//   categoryId: any = ""
-//   categories: any = "";
-//   categoryName: any;
-//   categoryImageUrl: any;
-//   constructor(private router: ActivatedRoute, private categoryService: CategoryService) {
-//     this.categoryId = this.router.snapshot.paramMap.get('cid');
-//     this.categoryService.viewCategoryf().subscribe(result => {
-//       console.log("result" + result);
-//       if (result) {
-//         this.categories = result;
-//         for (let category of this.categories) {
-//           if (category._id == this.categoryId) {
-//             this.categoryName = category.categoryName;
-//             this.categoryImageUrl = category.categoryImageUrl;
-//           }
-//         }
-//       }
-//       else
-//         alert("!Something went wrong")
-//     })
+// productImage:any="";
+// productName:string="";
+// productPrice:any;
+// productQty:any;
+// productDescription:string="";
+// productDiscount:any;
+// categoryId:any;
 
+// // fetching data from category component
+//  categoryData:any[]=[];
+// constructor(private _service:ProductService,private _cservice:CategoryService){ 
+//   this._cservice.viewCategoryf().subscribe(result=>{
+//     this.categoryData=result;
+//   })
+// }
+// selectImage(event:any){
+//   if(event.target.files.length>0)
+//   this.productImage=event.target.files[0];
+// }
+
+//   var options = ["one","two","three"], selectHtml = "";
+
+// for(var optionIndex = 0; optionIndex < options.length; optionIndex++) {
+
+//     selectHtml += ("<option>" + options[optionIndex] + "</option>");
+
+// }
+
+// document.getElementById("selectBox").innerHTML = selectHtml;
+
+// addProductHtml(){
+//   console.log(this.categoryId);
+// let formdata=new FormData();
+//  formdata.append("productName",this.productName);
+//  formdata.append("productImage",this.productImage);
+//  formdata.append("productPrice",this.productPrice);
+//  formdata.append("productQty",this.productQty);
+//  formdata.append("productDescription",this.productDescription);
+//  formdata.append("productDiscount",this.productDiscount);
+//  formdata.append("categoryId",this.categoryId);
+
+//   this._service.addProduct(formdata).subscribe(result=>{
+//      if(result)
+//       alert('You product added sucseful');
+//       else
+//       alert('Failed to add product!');
+//   })
+// }
 
 
 //     // console.log(this.file);

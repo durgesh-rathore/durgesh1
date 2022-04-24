@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 export class UserService {
 apiUrl="https://angularapi-api.herokuapp.com/api/admin/signup";
 apiUrlin="https://angularapi-api.herokuapp.com/api/admin/signin";
+userUrl="https://localhost:3000/api/user/view-user";
   constructor(private Uhttp:HttpClient) {  }
   userapiservice(e:string,p:string):Observable<any>{
     return this.Uhttp.post(this.apiUrl,{email:e,password:p})
@@ -17,5 +18,8 @@ apiUrlin="https://angularapi-api.herokuapp.com/api/admin/signin";
 
 cheackToken():boolean{
  return  !!localStorage.getItem('token-jwt');
+}
+viewUser():Observable<any>{
+  return this.Uhttp.get(this.userUrl)
 }
 }

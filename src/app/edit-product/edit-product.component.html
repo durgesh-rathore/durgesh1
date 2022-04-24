@@ -1,5 +1,43 @@
-<p>edit-product works!</p>
+<!-- <p>edit-product works!</p>
 <div class="container">
     <input type="text" [(ngModel)]='productName' name="productName">
    </div>
-   <img src="{{productImageUrl}}" alt="">
+   <img src="{{productImageUrl}}" alt=""> -->
+   <!-- <p>add-product works!</p> -->
+<div class="container">
+    <form >
+      <p class="form-group mt-5">
+        <input type="text" [(ngModel)]="productName" class="form-control" placeholder="Enter the product Name" name="productName" id="">
+      </p>
+      <p class="form-group">
+        <input type="text" [(ngModel)]="productPrice" class="form-control" placeholder="Enter the Price" name="productPrice" id="">
+      </p>
+      <p class="form-group">
+           <input type="text" [(ngModel)]="productQty" class="form-control" placeholder="Enter the Qty" name="productQty" id="">
+      </p>
+      <p class="form-group">
+          <img src="{{productImageUrl}}" alt="">
+        <input type="file" (change)="selectImage($event)" name="ProductImage" class="form-control"   placeholder="Select Product Images" id="">
+      </p>
+     <div col-md-5>
+  <span>Select Category :</span>     
+<select class="form-control mb-3 "  name="categoryId" [(ngModel)]="categoryId">
+  <option *ngFor="let c of categoryData" [value]=c._id name="categoryId">{{c.categoryName}}</option>
+
+</select>
+</div>
+     
+      <p class="form-group">
+             <input type="text" [(ngModel)]="productDiscount" class="form-control" placeholder="Enter the Discount" name="productQty" id="">
+   </p>
+      <p class="form-group">
+        <input type="text" [(ngModel)]="productDescription" class="form-control" placeholder="Enter Description of product" name="productDescrition" id="">
+      </p>
+      <p class="form-group">
+          <button type="submit" (click)="editProductHtml()" class="btn btn-primary">
+            EditProduct
+          </button>
+      </p>
+    </form>
+    </div>
+    

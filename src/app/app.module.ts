@@ -21,6 +21,8 @@ import { ViewProductComponent } from './view-product/view-product.component';
 import { ProductService } from './product.service';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { ViewCartComponent } from './view-cart/view-cart.component';
+import { OrderListComponent } from './order-list/order-list.component';
+import { UserListComponent } from './user-list/user-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +37,9 @@ import { ViewCartComponent } from './view-cart/view-cart.component';
     ViewProductComponent,
     AddProductComponent,
     EditProductComponent,
-    ViewCartComponent
+    ViewCartComponent,
+    OrderListComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,

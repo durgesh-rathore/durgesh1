@@ -13,6 +13,8 @@ import { AuthGuard } from './auth.guard';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { ViewCartComponent } from './view-cart/view-cart.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { OrderListComponent } from './order-list/order-list.component';
 
 
 const routes: Routes =
@@ -33,6 +35,16 @@ const routes: Routes =
     {
       path: "viewProduct",
       component: ViewProductComponent,
+      canActivate: [AuthGuard]
+    },
+    {
+      path: "userlist",
+      component: UserListComponent,
+      canActivate: [AuthGuard]
+    },
+    {
+      path: "orderhistory",
+      component: OrderListComponent,
       canActivate: [AuthGuard]
     },
     {

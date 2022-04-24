@@ -10,18 +10,19 @@ import { CategoryService } from '../category.service';
 export class EditCategoryComponent implements OnInit {
   categoryId: any = ""
   categories: any = "";
-  categoryName: any;
-  categoryImageUrl: any;
-  constructor(private router: ActivatedRoute, private categoryService: CategoryService) {
+  categoryName: any="";
+  categoryImage: any="";
+    newCategory:string=""; 
+  constructor(private router: ActivatedRoute, private cateServ: CategoryService) {
     this.categoryId = this.router.snapshot.paramMap.get('cid');
-    this.categoryService.viewCategoryf().subscribe(result => {
+    this.cateServ.viewCategoryf().subscribe(result => {
       console.log("result" + result);
       if (result) {
         this.categories = result;
         for (let category of this.categories) {
           if (category._id == this.categoryId) {
             this.categoryName = category.categoryName;
-            this.categoryImageUrl = category.categoryImageUrl;
+            this.categoryImage = category.categoryImageUrl;
           }
         }
       }
@@ -37,6 +38,29 @@ export class EditCategoryComponent implements OnInit {
 
 
   }
+  selectImage(event:any){
+    if(event.target.files.length>0)
+    this.newCategory=event.target.files[0];
+  }
+  EditCategoryHtml(){
+    const formdata=new FormData();
+    formdata.append("newCategory",this.newCategory);
+    formdata.append("oldImage",this.categoryImage);
+    formdata.append("categoryName",this.categoryName);
+    formdata.append("categoryId",this.categoryId);
+    this.cateServ.editCategory(formdata).subscribe(result=>{
+      console.log("in alter")
+      // console.log(result.modifiedCount);
+      if(!result){
+        
+        alert("category update successful");
+        // this._router.navigate(['addProduct'])
+      }
+     else
+     alert("Failed to failed category");
+    });
+    
+ }
 
 
   ngOnInit(): void {

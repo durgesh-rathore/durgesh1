@@ -1,9 +1,21 @@
-<p>edit-category works!</p>
+<!-- <p>edit-category works!</p>
 <div class="container">
  <input type="text" [(ngModel)]='categoryName' name="categoryName">
 </div>
-<img src="{{categoryImageUrl}}" alt="">
-<!-- <input class="d-none" type="file" accept="image/*" #file (change)="onImageChanged(file.files)"> -->
-<!-- <button (click)="file.click()">
-   Upload Again
-</button> -->
+<img src="{{categoryImageUrl}}" alt=""> -->
+<div class="container">
+   <form >
+     <p class="form-group">
+       <input type="text" [(ngModel)]="categoryName"  class="form-control" name="categoryName" id="">
+     </p>
+     <p class="form-group">
+      <img src="{{categoryImage}}" alt="">
+       <input type="file" (change)="selectImage($event)" name="categoryImage" class="form-control"  name="categoryName" id="">
+     </p>
+     <p class="form-group">
+         <button type="submit" (click)="EditCategoryHtml()" class="btn btn-primary">
+           EditCategory
+         </button>
+     </p>
+   </form>
+   </div>

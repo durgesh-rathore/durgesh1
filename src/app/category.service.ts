@@ -8,11 +8,15 @@ export class CategoryService {
    addImage="https://angularapi-api.herokuapp.com/api/category/add";
    viewCategory="https://angularapi-api.herokuapp.com/api/category/category-list";
    deletecategory="https://angularapi-api.herokuapp.com/api/category/delete-category";
+   editcategory="http://localhost:3000/api/category/update";
    public responseCache = new Map();
 
   constructor(private _http:HttpClient) { }
   addCategory(imagedata:any):Observable<any>{
     return this._http.post(this.addImage,imagedata)
+  }
+  editCategory(imagedata:any):Observable<any>{
+    return this._http.post(this.editcategory,imagedata)
   }
   viewCategoryf():Observable<any>{ 
     const categorysFromCache = this.responseCache.get(this.viewCategory);

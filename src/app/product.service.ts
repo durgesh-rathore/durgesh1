@@ -10,11 +10,15 @@ export class ProductService {
   viewProductUrl="https://angularapi-api.herokuapp.com/api/product/product-list";
   deleteProductUrl="https://angularapi-api.herokuapp.com/api/product/delete-product";
   cartUrl="https://angularapi-api.herokuapp.com/api/cart/addtocart";
+  editProductUrl="http://localhost:3000/api/product/update";
   public responseCache = new Map();
   constructor( private _http:HttpClient ) {
      }
      addProduct(formdata:FormData):Observable<any>{
       return this._http.post(this.addProductUrl,formdata);
+     }
+     editProduct(formdata:FormData):Observable<any>{
+      return this._http.post(this.editProductUrl,formdata);
      }
      productsFromCache:any;
      viewProduct():Observable<any> {
